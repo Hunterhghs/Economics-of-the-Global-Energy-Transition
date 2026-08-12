@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Investment gaps, stranded assets, and the fiscal implications of rapid decarbonization — a comprehensive economic analysis by Hunter Hughes, H Heuristics.">
+<meta name="author" content="Hunter Hughes, H Heuristics">
+<meta name="citation_title" content="Economics of the Global Energy Transition: Investment Gaps, Stranded Assets, and the Fiscal Implications of Rapid Decarbonization">
+<meta name="citation_author" content="Hunter Hughes">
+<meta name="citation_publication_date" content="2025/08/04">
+<meta name="citation_publisher" content="H Heuristics">
+<meta name="citation_journal_title" content="H Heuristics Research Reports">
+<meta name="dcterms.created" content="2025-08-04">
+<meta name="dcterms.creator" content="Hunter Hughes">
+<meta name="dcterms.publisher" content="H Heuristics (hheuristics.com)">
+<meta name="dc.title" content="Economics of the Global Energy Transition">
+<meta name="dc.creator" content="Hunter Hughes">
+<meta name="dc.date" content="2025-08-04">
+<meta name="dc.publisher" content="H Heuristics">
+<meta name="dc.type" content="Text.Report">
+<meta name="prism.aggregationType" content="Report">
+<meta name="prism.publicationName" content="H Heuristics Research Reports">
+<title>Economics of the Global Energy Transition — H Heuristics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS Variables — Eastern European Economist Palette ===== */
+:root {
+  --bg: #fafaf8;
+  --bg-card: #ffffff;
+  --bg-accent: #f0ede6;
+  --bg-dark: #1a1f2b;
+  --text: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #757575;
+  --text-inverse: #f0ede6;
+  --primary: #1a2744;
+  --primary-light: #2c3e6b;
+  --accent: #8b6914;
+  --accent-light: #c8a951;
+  --border: #d9d5cc;
+  --border-light: #e8e4db;
+  --rule: #c4bfb4;
+  --chart-blue: #2c5282;
+  --chart-blue-light: #63b3ed;
+  --chart-gold: #b8860b;
+  --chart-red: #9b2c2c;
+  --chart-teal: #276749;
+  --chart-gray: #718096;
+  --chart-orange: #c05621;
+  --chart-purple: #553c9a;
+  --radius: 2px;
+  --max-width: 960px;
+  --gutter: 2rem;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Masthead ===== */
+.masthead {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  padding: 2.5rem var(--gutter) 3rem;
+  border-bottom: 4px solid var(--accent);
+}
+.masthead-inner { max-width: var(--max-width); margin: 0 auto; }
+.masthead .overline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 1.2rem;
+}
+.masthead h1 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 840px;
+  margin-bottom: 0.8rem;
+}
+.masthead .subtitle {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(240,237,230,0.75);
+  max-width: 680px;
+  line-height: 1.5;
+}
+.masthead .meta-row {
+  display: flex; flex-wrap: wrap; gap: 1.5rem 3rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240,237,230,0.18);
+  font-size: 0.8rem;
+  color: rgba(240,237,230,0.6);
+}
+.masthead .meta-row strong { color: var(--accent-light); font-weight: 500; }
+
+/* ===== Navigation (sticky TOC) ===== */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-dark); border-bottom: 1px solid rgba(240,237,230,0.1);
+  padding: 0 var(--gutter);
+  backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: var(--max-width); margin: 0 auto;
+  display: flex; gap: 0; overflow-x: auto;
+}
+.nav-inner a {
+  display: block; padding: 0.7rem 1.1rem;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.03em;
+  color: rgba(240,237,230,0.65); text-decoration: none;
+  white-space: nowrap; border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.nav-inner a:hover, .nav-inner a:focus {
+  color: var(--text-inverse); border-bottom-color: var(--accent-light);
+}
+
+/* ===== Content ===== */
+.content { max-width: var(--max-width); margin: 0 auto; padding: 3rem var(--gutter) 4rem; }
+
+/* Sections */
+section { margin-bottom: 4.5rem; }
+section > h2 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.9rem; font-weight: 600; color: var(--primary);
+  line-height: 1.2; margin-bottom: 0.3rem;
+  padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent);
+}
+section > .section-dek {
+  font-size: 0.95rem; color: var(--text-muted);
+  margin-bottom: 2rem; max-width: 680px; font-style: italic;
+}
+section > h3 {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--primary-light);
+  margin: 2.2rem 0 0.8rem;
+}
+section p { margin-bottom: 1rem; color: var(--text-secondary); }
+section p strong { color: var(--text); }
+
+/* Stat cards */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  padding: 1.3rem 1.3rem 1.1rem;
+  border-left: 3px solid var(--accent);
+}
+.stat-card .stat-value { font-family: 'Newsreader', Georgia, serif; font-size: 1.9rem; font-weight: 700; color: var(--primary); line-height: 1.1; }
+.stat-card .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.4; }
+.stat-card .stat-source { font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic; }
+
+/* Chart containers */
+.chart-container {
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  padding: 1.3rem; margin: 1.8rem 0;
+  position: relative;
+}
+.chart-container .chart-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.8rem;
+}
+.chart-container canvas { max-height: 400px; }
+.chart-container .chart-caption {
+  font-size: 0.78rem; color: var(--text-muted); font-style: italic;
+  margin-top: 0.8rem; padding-top: 0.6rem;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Pair charts side-by-side */
+.chart-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.8rem 0; }
+@media (max-width: 700px) { .chart-pair { grid-template-columns: 1fr; } }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; margin: 1.8rem 0; font-size: 0.82rem; }
+.data-table thead { background: var(--bg-dark); color: var(--text-inverse); }
+.data-table thead th {
+  padding: 0.65rem 0.8rem; text-align: left; font-weight: 500;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.data-table tbody td {
+  padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border-light);
+  color: var(--text-secondary);
+}
+.data-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+.data-table tbody tr:hover { background: rgba(200,169,81,0.06); }
+.data-table .num { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+
+/* Callout box */
+.callout {
+  background: var(--bg-accent); border-left: 4px solid var(--primary);
+  padding: 1.3rem 1.4rem; margin: 2rem 0; font-size: 0.9rem;
+}
+.callout strong { color: var(--primary); }
+.callout .callout-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.5rem;
+}
+
+/* Blockquote for key quotes */
+.pull-quote {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.2rem; font-weight: 500; font-style: italic;
+  color: var(--primary-light); line-height: 1.45;
+  padding: 1.2rem 1.5rem; margin: 2rem 0;
+  border-left: 4px solid var(--accent); background: var(--bg-accent);
+}
+.pull-quote .attribution {
+  display: block; margin-top: 0.6rem; font-size: 0.8rem;
+  font-style: normal; color: var(--text-muted); font-family: 'Inter', sans-serif;
+}
+
+/* Executive summary cards */
+.exec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 2rem 0; }
+.exec-card {
+  background: var(--bg-card); border: 1px solid var(--border-light); padding: 1.5rem;
+}
+.exec-card .exec-num { font-family: 'Newsreader', Georgia, serif; font-size: 2.4rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.exec-card .exec-title { font-weight: 600; margin: 0.4rem 0 0.5rem; font-size: 1rem; }
+.exec-card .exec-body { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* Footer */
+.report-footer {
+  background: var(--bg-dark); color: var(--text-inverse);
+  padding: 3rem var(--gutter) 2rem; margin-top: 5rem;
+  border-top: 4px solid var(--accent);
+}
+.footer-inner { max-width: var(--max-width); margin: 0 auto; }
+.footer-inner h3 {
+  font-family: 'Newsreader', Georgia, serif; font-size: 1.2rem;
+  margin-bottom: 1.2rem; color: var(--accent-light);
+}
+.footer-inner p, .footer-inner li {
+  font-size: 0.8rem; color: rgba(240,237,230,0.65); line-height: 1.65; margin-bottom: 0.4rem;
+}
+.footer-inner a { color: var(--accent-light); text-decoration: underline; }
+.footer-meta {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  padding-top: 1.5rem; margin-top: 1.5rem;
+  border-top: 1px solid rgba(240,237,230,0.15);
+}
+@media (max-width: 600px) { .footer-meta { grid-template-columns: 1fr; } }
+
+/* Section dividers */
+.section-rule { border: none; border-top: 1px solid var(--rule); margin: 3rem 0 3.5rem; }
+
+/* Back to top */
+.back-top { text-align: center; margin-top: 2rem; }
+.back-top a { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; border-bottom: 1px dotted var(--text-muted); }
+
+/* Print styles */
+@media print {
+  .sticky-nav { display: none; }
+  body { font-size: 11pt; background: white; }
+  .masthead, .report-footer { background: white; color: black; }
+  .masthead .overline, .masthead .meta-row { color: #666; }
+  .masthead h1 { color: #1a2744; }
+  .masthead .subtitle { color: #555; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== MASTHEAD ===== -->
+<header class="masthead">
+<div class="masthead-inner">
+  <div class="overline">H Heuristics · Research Report № 2025-03 · August 2025</div>
+  <h1>Economics of the<br>Global Energy Transition</h1>
+  <p class="subtitle">Investment gaps, stranded assets, and the fiscal implications of rapid decarbonization</p>
+  <div class="meta-row">
+    <div><strong>Author</strong><br>Hunter Hughes</div>
+    <div><strong>Institution</strong><br>H Heuristics</div>
+    <div><strong>Date</strong><br>4 August 2025</div>
+    <div><strong>DOI</strong><br>hheuristics.com/reports/energy-transition-2025</div>
+  </div>
+</div>
+</header>
+
+<!-- ===== STICKY TOC ===== -->
+<nav class="sticky-nav" aria-label="Table of Contents">
+<div class="nav-inner">
+  <a href="#exec">Executive Summary</a>
+  <a href="#invest">1. Investment Gap</a>
+  <a href="#stranded">2. Stranded Assets</a>
+  <a href="#fiscal">3. Fiscal Implications</a>
+  <a href="#scenarios">4. Scenarios & Pathways</a>
+  <a href="#conclusion">5. Conclusions</a>
+  <a href="#references">References</a>
+</div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content">
+
+<!-- EXECUTIVE SUMMARY -->
+<section id="exec">
+<h2>Executive Summary</h2>
+<p class="section-dek">A synthesis of investment requirements, asset stranding risk, and sovereign fiscal exposure under accelerated decarbonisation pathways.</p>
+
+<div class="exec-grid">
+<div class="exec-card"><div class="exec-num">$2.0T</div><div class="exec-title">Annual Clean Energy Investment (2024)</div><div class="exec-body">Global clean energy investment reached ~$2.0 trillion in 2024 according to the IEA — a record, but still less than half the ~$4.5 trillion per year required by 2030 under the Net Zero Emissions (NZE) scenario.</div></div>
+<div class="exec-card"><div class="exec-num">2.0×</div><div class="exec-title">EMDE Investment Multiplier Needed</div><div class="exec-body">Emerging market and developing economies outside China account for just 15% of global clean energy spending but two-thirds of the world's population. The IEA estimates they need a fourfold increase in clean energy investment by 2030.</div></div>
+<div class="exec-card"><div class="exec-num">$1–4T</div><div class="exec-title">Stranded Fossil Fuel Assets</div><div class="exec-body">Under a 1.5°C-aligned pathway, between $1 trillion and $4 trillion in fossil fuel reserves and infrastructure face stranding. Carbon Tracker estimates unburnable carbon at 60–80% of declared corporate reserves.</div></div>
+<div class="exec-card"><div class="exec-num">~25</div><div class="exec-title">Fiscally Vulnerable Nations</div><div class="exec-body">Roughly 25 countries derive more than 20% of government revenue from fossil fuels. For nations such as Iraq, Kuwait, and Angola, oil revenues constitute 60–90% of fiscal receipts — creating acute transition risk.</div></div>
+<div class="exec-card"><div class="exec-num">2.5°C</div><div class="exec-title">IEA STEPS Warming Trajectory</div><div class="exec-body">Under stated policies (STEPS), the world is on track for ~2.5°C of warming by 2100 — a meaningful improvement from earlier projections (~3.5°C pre-Paris) but well short of the Paris Agreement goal of well below 2°C.</div></div>
+<div class="exec-card"><div class="exec-num">$150T</div><div class="exec-title">Cumulative Investment Required to 2050</div><div class="exec-body">IRENA's 1.5°C pathway requires $150 trillion in cumulative energy transition investment through 2050 — roughly $5.7 trillion per year to 2030, rising to $7.4 trillion per year thereafter. This represents approximately 2.0–2.5% of global GDP.</div></div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">Core Argument</div>
+  The global energy transition is not primarily a technological problem — it is an <strong>investment allocation and fiscal governance problem</strong>. The capital exists globally (global savings exceed $25 trillion annually). The binding constraints are: (a) the geographic mismatch between where capital accumulates and where it is needed; (b) the cost-of-capital penalty of 2–7 percentage points in developing economies; and (c) the sovereign fiscal exposure of fossil-fuel-dependent states that simultaneously need to decarbonise and replace their primary revenue base.
+</div>
+</section>
+
+<hr class="section-rule">
+
+<!-- SECTION 1: INVESTMENT GAP -->
+<section id="invest">
+<h2>1. The Investment Gap</h2>
+<p class="section-dek">Global clean energy investment has doubled since 2020 — but still falls short of net-zero requirements by roughly $2.5 trillion per year. The gap is concentrated overwhelmingly in emerging economies.</p>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="stat-value">$2.0T</div><div class="stat-label">Clean energy investment, 2024 (IEA)</div><div class="stat-source">IEA World Energy Investment 2024</div></div>
+<div class="stat-card"><div class="stat-value">$4.5T</div><div class="stat-label">Annual requirement by 2030, NZE scenario</div><div class="stat-source">IEA Net Zero Roadmap, 2023 Update</div></div>
+<div class="stat-card"><div class="stat-value">2.3×</div><div class="stat-label">Investment gap ratio (actual/required)</div><div class="stat-source">Author calculation from IEA data</div></div>
+<div class="stat-card"><div class="stat-value">15%</div><div class="stat-label">EMDE ex-China share of global clean investment</div><div class="stat-source">IEA World Energy Outlook 2024</div></div>
+</div>
+
+<h3>Investment Trends: 2015–2030</h3>
+<p>The trajectory is encouraging in absolute terms — clean energy investment has roughly doubled since 2020. But the <strong>growth rate is decelerating</strong>: from 27% in 2021 to an estimated 8% in 2025 (BNEF). If this deceleration continues, the NZE investment pathway becomes unreachable without a structural shift in developing-economy financing mechanisms.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 1 — Global Clean Energy Investment vs. NZE Requirement (2015–2030)</div>
+  <canvas id="chart-investment-gap" height="340"></canvas>
+  <div class="chart-caption">Sources: IEA World Energy Investment 2023–2024; BNEF Energy Transition Investment Trends 2025–2026; IEA World Energy Outlook 2024; IRENA WETO 2023. NZE pathway interpolated between 2024 actual and 2030 requirement. Shaded region = investment gap.</div>
+</div>
+
+<h3>Geographic Imbalance: The EMDE Gap</h3>
+<p>The most consequential structural feature of the global energy transition is the geographic concentration of clean energy investment. China accounts for roughly one-third of all global clean energy spending. The European Union and United States together account for another third. Emerging market and developing economies outside China — home to two-thirds of the world's population — receive <strong>just 15% of global clean energy investment</strong>.</p>
+<p>The cost of capital is the binding constraint. According to the IEA, the financing cost for a utility-scale solar project in an EMDE outside China is typically <strong>2–3 times higher</strong> than in an advanced economy. This premium reflects a combination of currency risk, political and regulatory uncertainty, off-taker creditworthiness, and shallow domestic capital markets. Reducing this spread is the single most leveraged policy intervention available.</p>
+
+<div class="chart-pair">
+<div class="chart-container">
+  <div class="chart-label">Figure 2 — Clean Energy Investment by Region, 2024</div>
+  <canvas id="chart-region-share" height="300"></canvas>
+  <div class="chart-caption">Source: IEA World Energy Investment 2024. EMDE ex-China share: ~15%.</div>
+</div>
+<div class="chart-container">
+  <div class="chart-label">Figure 3 — Investment by Technology, 2024 vs. 2030 NZE</div>
+  <canvas id="chart-tech-gap" height="300"></canvas>
+  <div class="chart-caption">Source: IEA WEI 2024 NZE pathway. Largest absolute gaps: efficiency, grids, renewables.</div>
+</div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">Investment Gap by the Numbers</div>
+  The additional clean energy investment required to meet the COP28 tripling-renewables and doubling-efficiency pledges is approximately <strong>$500 billion per year</strong> above current spending — concentrated in grid infrastructure ($300B gap), energy efficiency ($1.25T gap), and renewable power in EMDE. Fossil fuel investment, meanwhile, remains at ~$1.0 trillion annually — roughly double what the NZE scenario allows by 2030. The <strong>clean-to-fossil investment ratio</strong> reached 2:1 in 2024 but must reach approximately 10:1 by 2030.
+</div>
+
+<h3>Case Study: India — The Investment Gap in a Rising Power</h3>
+<p>India, the world's most populous country and third-largest energy consumer, invested approximately <strong>$68 billion in clean energy in 2025</strong> — a 15% year-on-year increase and the fastest growth rate among major EMDE (BNEF). Yet this figure represents less than half of the $160–200 billion per year required by 2030 for an NZE-aligned pathway. At current run rates, India faces a cumulative investment shortfall of roughly <strong>$600 billion</strong> across the 2025–2030 period. The binding constraints are not ambition — India has a 500 GW renewable target for 2030 — but rather the financial health of electricity distribution companies (DISCOMs), grid infrastructure bottlenecks, and the 2–3× cost-of-capital penalty relative to projects in advanced economies.</p>
+
+<table class="data-table">
+<thead><tr><th>Metric</th><th>India</th><th>EU</th><th>Africa (Aggregate)</th></tr></thead>
+<tbody>
+<tr><td>2024 Clean Energy Investment</td><td class="num">$59B</td><td class="num">$370B</td><td class="num">>$40B</td></tr>
+<tr><td>Annual NZE Requirement (2030)</td><td class="num">$160–200B</td><td class="num">$600–700B</td><td class="num">$200–250B</td></tr>
+<tr><td>Current Shortfall</td><td class="num">~$100–130B</td><td class="num">~$150–250B</td><td class="num">~$160–210B</td></tr>
+<tr><td>Cost of Capital Premium (vs. Advanced Econ.)</td><td class="num">2–3×</td><td class="num">—</td><td class="num">3–7 pp higher</td></tr>
+<tr><td>Key Constraint</td><td>DISCOM health, grid</td><td>Permitting, industry</td><td>Local-currency finance</td></tr>
+</tbody>
+</table>
+</section>
+
+<hr class="section-rule">
+
+<!-- SECTION 2: STRANDED ASSETS -->
+<section id="stranded">
+<h2>2. Stranded Assets</h2>
+<p class="section-dek">The unburnable carbon thesis, regional risk distribution, and the financial sector transmission mechanism.</p>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="stat-value">$1–4T</div><div class="stat-label">Global stranded asset value, 1.5°C scenario</div><div class="stat-source">Carbon Tracker / IRENA / IMF synthesis</div></div>
+<div class="stat-card"><div class="stat-value">60–80%</div><div class="stat-label">Declared fossil reserves that are unburnable</div><div class="stat-source">Carbon Tracker Initiative, 2011–2023</div></div>
+<div class="stat-card"><div class="stat-value">$25T</div><div class="stat-label">Global fossil fuel infrastructure stock at risk</div><div class="stat-source">IRENA Stranded Assets Report</div></div>
+<div class="stat-card"><div class="stat-value">$1.4T</div><div class="stat-label">Top 60 banks' fossil fuel lending (2016–2023)</div><div class="stat-source">Banking on Climate Chaos, 2024</div></div>
+</div>
+
+<h3>The Unburnable Carbon Thesis</h3>
+<p>First articulated by the Carbon Tracker Initiative in 2011, the unburnable carbon thesis holds that to have an 80% probability of limiting warming to 2°C, only <strong>565–886 GtCO₂</strong> can be emitted between 2011 and 2050. Yet the world's declared proved fossil fuel reserves — those listed on stock exchanges — contain approximately <strong>2,860 GtCO₂</strong> of embedded carbon. The arithmetic is stark: <strong>60–80% of declared reserves must remain in the ground</strong> if the world is to meet even a 2°C target, let alone 1.5°C. This has profound implications for the valuation of fossil fuel companies, the sovereign balance sheets of resource-dependent states, and the stability of financial institutions with concentrated fossil fuel exposure.</p>
+
+<div class="pull-quote">
+  "The $25 trillion of fossil fuel assets that could be stranded is comparable to the value of the entire US stock market. This is not a niche environmental concern — it is a systemic risk to the global financial system."
+  <span class="attribution">— Carbon Tracker Initiative, <em>Unburnable Carbon</em> (2011, updated 2023)</span>
+</div>
+
+<h3>Regional Distribution of Stranding Risk</h3>
+<p>Stranded asset risk is distributed unevenly across the global economy. The Middle East and North Africa (MENA) region, Russia and the Caspian, and parts of Latin America — particularly Venezuela — face the greatest exposure. These regions combine high fossil fuel reserve-to-GDP ratios with limited economic diversification, creating a "double exposure" to both the physical stranding of assets and the fiscal consequences of lost resource revenues.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 4 — Estimated Stranded Fossil Fuel Asset Value by Region, 1.5°C Scenario</div>
+  <canvas id="chart-stranded-region" height="340"></canvas>
+  <div class="chart-caption">Sources: Carbon Tracker Initiative; IRENA Stranded Assets and Sustainable Development (2023); IMF Working Paper 2022/123. Figures represent mid-range estimates; the range of uncertainty spans ±40% depending on technology cost assumptions and policy stringency.</div>
+</div>
+
+<h3>Asset Class Breakdown</h3>
+<p>Not all fossil fuel assets face equal stranding risk. <strong>Coal reserves</strong> are the most vulnerable, with an estimated 90%+ of declared coal reserves potentially unburnable under 1.5°C. <strong>Oil reserves</strong> face intermediate risk — roughly 35–50% stranding probability — with high-cost producers (oil sands, deepwater, Arctic) most exposed. <strong>Natural gas</strong>, often positioned as a "bridge fuel," faces stranding risk in the power sector as renewables-plus-storage become cost-competitive, though gas may retain value longer in industrial heat and as a chemical feedstock. <strong>Infrastructure</strong> — pipelines, LNG terminals, refineries, and power plants — represents a distinct and underappreciated category: these assets have long operational lifetimes (30–50 years) and their stranding is a function of early retirement rather than reserve non-extraction.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 5 — Stranded Asset Exposure by Asset Class, 1.5°C vs. BAU Scenario</div>
+  <canvas id="chart-asset-class" height="320"></canvas>
+  <div class="chart-caption">Sources: Carbon Tracker; IEA WEO 2024; IRENA. Coal faces near-total stranding under 1.5°C; infrastructure stranding grows over time as operational lives are curtailed.</div>
+</div>
+
+<h3>Financial Sector Transmission</h3>
+<p>The stranding of physical fossil fuel assets creates a direct transmission channel to the financial sector through several mechanisms: (a) <strong>corporate loan portfolios</strong> — the world's 60 largest banks provided $1.4 trillion in fossil fuel lending between 2016 and 2023 (Banking on Climate Chaos, 2024); (b) <strong>bond markets</strong> — fossil fuel companies have roughly $1.8 trillion in outstanding bonds globally; (c) <strong>equity valuations</strong> — fossil fuel shares still constitute 4–7% of major global equity indices, down from 15% a decade ago but still representing trillions in market capitalisation; and (d) <strong>sovereign debt</strong> — fossil-fuel-dependent states carry elevated debt loads that become unsustainable if resource revenues decline faster than the economy diversifies. The Bank for International Settlements has warned that a disorderly transition — in which asset stranding occurs rapidly and unexpectedly — could trigger a "climate Minsky moment" with cascading losses across interconnected financial institutions.</p>
+</section>
+
+<hr class="section-rule">
+
+<!-- SECTION 3: FISCAL IMPLICATIONS -->
+<section id="fiscal">
+<h2>3. Fiscal Implications</h2>
+<p class="section-dek">Sovereign revenue exposure, carbon pricing dynamics, fossil fuel subsidy reform, and the just transition fiscal burden.</p>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="stat-value">~25</div><div class="stat-label">Countries with >20% govt revenue from fossil fuels</div><div class="stat-source">IMF Fiscal Monitor, October 2023</div></div>
+<div class="stat-card"><div class="stat-value">$7.0T</div><div class="stat-label">Global fossil fuel subsidies, 2022 (explicit + implicit)</div><div class="stat-source">IMF Working Paper 2023/169</div></div>
+<div class="stat-card"><div class="stat-value">$100B</div><div class="stat-label">Global carbon pricing revenue, 2023</div><div class="stat-source">World Bank Carbon Pricing Dashboard</div></div>
+<div class="stat-card"><div class="stat-value">€100B</div><div class="stat-label">EU Just Transition Fund (2021–2027)</div><div class="stat-source">European Commission</div></div>
+</div>
+
+<h3>Fossil Fuel Revenue Dependence</h3>
+<p>For a subset of roughly 25 countries, fossil fuel revenues constitute more than 20% of total government revenue — a threshold beyond which the loss of resource income creates acute fiscal stress. In the most dependent cases — Iraq, Kuwait, Libya, Angola, Republic of Congo, and Timor-Leste — hydrocarbon revenues represent <strong>60–90% of total government revenue</strong> and an even larger share of export earnings. For these states, the energy transition is not merely an environmental policy question; it is an existential fiscal challenge that requires a managed restructuring of the entire government revenue base.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 6 — Fossil Fuel Revenue as % of Government Revenue, Selected Countries</div>
+  <canvas id="chart-fiscal-dependence" height="360"></canvas>
+  <div class="chart-caption">Sources: IMF Fiscal Monitor (October 2023); World Bank; OECD.stat; country IMF Article IV reports. Figures represent latest available data (2021–2023). "Implicit subsidies" include underpricing of environmental and other externalities.</div>
+</div>
+
+<h3>Fossil Fuel Subsidies: The Perverse Fiscal Transfer</h3>
+<p>Global fossil fuel subsidies reached an estimated <strong>$7.0 trillion in 2022</strong> — equivalent to 7.1% of global GDP — according to the IMF. This figure includes both explicit subsidies (direct budgetary transfers and tax expenditures, ~$1.3 trillion) and implicit subsidies (the gap between actual consumer prices and efficient prices that account for supply costs, environmental damage, and foregone consumption tax revenue, ~$5.7 trillion). The 2022 spike was driven by the global energy price surge following Russia's invasion of Ukraine, which prompted governments worldwide to increase consumer price controls and direct transfers to cushion households. While politically understandable, these subsidies work directly against decarbonisation objectives: they artificially lower the cost of fossil fuel consumption, crowd out clean energy investment, and divert scarce fiscal resources that could otherwise finance the transition.</p>
+
+<div class="pull-quote">
+  "Eliminating explicit fossil fuel subsidies would reduce global CO₂ emissions by 5–7% by 2030 and free up roughly $1.3 trillion per year in fiscal space — more than the total annual clean energy investment gap in developing economies."
+  <span class="attribution">— Synthesis of IMF, IEA, and OECD subsidy reform analyses</span>
+</div>
+
+<h3>Carbon Pricing: Growing Revenue, Modest Coverage</h3>
+<p>Carbon pricing instruments — emissions trading systems (ETS) and carbon taxes — now cover approximately 23% of global greenhouse gas emissions, generating roughly <strong>$100 billion in government revenue in 2023</strong> (World Bank). The EU ETS remains the largest and most mature system, with allowance prices exceeding €100/tCO₂ briefly in early 2023 before settling in the €60–80 range. China's national ETS, launched in 2021, currently covers the power sector only (~4.5 GtCO₂) with prices around ¥60–80/tCO₂ (~$8–11). The revenue potential is significant but the coverage gap remains vast: 77% of global emissions are unpriced, and even where pricing exists, rates are often well below the $50–100/tCO₂ that the IMF estimates is needed by 2030 to align with Paris temperature goals.</p>
+
+<table class="data-table">
+<thead><tr><th>Carbon Pricing Instrument</th><th>Coverage</th><th>Price (2024)</th><th>Revenue (2023, $B)</th></tr></thead>
+<tbody>
+<tr><td>EU Emissions Trading System (EU ETS)</td><td>~36% of EU emissions</td><td>€55–80/tCO₂</td><td class="num">~$45</td></tr>
+<tr><td>China National ETS</td><td>Power sector (~4.5 GtCO₂)</td><td>¥60–80/tCO₂ (~$8–11)</td><td class="num">~$2</td></tr>
+<tr><td>UK ETS</td><td>~25% of UK emissions</td><td>£30–50/tCO₂</td><td class="num">~$7</td></tr>
+<tr><td>Sweden Carbon Tax</td><td>~40% of national emissions</td><td>~$130/tCO₂ (highest globally)</td><td class="num">~$2.5</td></tr>
+<tr><td>Canada Federal Carbon Price</td><td>All provinces without equivalent system</td><td>CAD 80/tCO₂ (rising to CAD 170 by 2030)</td><td class="num">~$7</td></tr>
+<tr><td><strong>Global Total</strong></td><td><strong>~23% of global GHG emissions</strong></td><td><strong>Varies widely</strong></td><td class="num"><strong>~$100</strong></td></tr>
+</tbody>
+</table>
+
+<h3>The Just Transition: Fiscal Costs of Social Equity</h3>
+<p>The labour market transition from fossil fuels to clean energy creates a specific set of fiscal obligations. The IEA estimates that roughly <strong>32 million people are employed in fossil fuel industries globally</strong>, compared with <strong>35 million in clean energy</strong> (IEA World Energy Employment, 2023). Under the NZE scenario, approximately 5 million fossil fuel jobs would be lost by 2030 — concentrated in coal mining (1.4 million), oil and gas extraction, and fossil fuel power generation. While 9 million new clean energy jobs would be created, the <strong>geographic and skills mismatch</strong> is substantial. Coal communities in particular face concentrated losses with limited local alternatives.</p>
+
+<p>The EU's Just Transition Fund — €100 billion over 2021–2027, drawn from the EU budget, the Recovery and Resilience Facility, and a dedicated lending facility — represents the most ambitious policy experiment in managing this transition equitably. Early evidence from Poland's Silesia region, Germany's Ruhr and Lusatia, and Spain's Asturias suggests that the critical success factors are: (a) early intervention before mine/power plant closure rather than reactive spending; (b) investment in physical infrastructure (transport links, industrial parks) rather than consumption subsidies; and (c) genuine devolution of spending decisions to regional authorities rather than central government control.</p>
+</section>
+
+<hr class="section-rule">
+
+<!-- SECTION 4: SCENARIOS & PATHWAYS -->
+<section id="scenarios">
+<h2>4. Scenarios &amp; Pathways</h2>
+<p class="section-dek">Comparing the major decarbonisation scenarios, their assumptions, investment requirements, and the three great policy experiments unfolding simultaneously.</p>
+
+<h3>Major Scenario Frameworks Compared</h3>
+<p>Global energy scenario analysis has coalesced around several families of models produced by the IEA, IPCC, and IRENA. These scenarios differ fundamentally in their treatment of policy ambition, technology cost assumptions, and the pace of structural change — and therefore produce meaningfully different investment requirements, emissions trajectories, and temperature outcomes.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 7 — Major Decarbonisation Scenarios: Temperature Outcomes & Investment Requirements</div>
+  <canvas id="chart-scenarios" height="380"></canvas>
+  <div class="chart-caption">Sources: IEA WEO 2023–2025; IPCC AR6 WGIII; IRENA WETO 2023. Bubble size proportional to cumulative investment requirement. Temperature ranges represent 50% confidence interval (IEA) or 66% range (IPCC). NZE=Net Zero Emissions; STEPS=Stated Policies; APS=Announced Pledges; CPS=Current Policies; SSP=Shared Socioeconomic Pathway.</div>
+</div>
+
+<h3>Technology Cost Curves: The Good News</h3>
+<p>The single most important economic fact of the energy transition is the extraordinary decline in clean technology costs. Between 2010 and 2023, the levelised cost of solar PV fell by approximately <strong>89%</strong>, onshore wind by <strong>69%</strong>, and lithium-ion battery packs by <strong>92%</strong> (BNEF, IRENA). These cost reductions follow Wright's Law — each doubling of cumulative deployment brings a predictable percentage cost reduction — and mean that solar and wind are now the cheapest sources of new electricity generation in most of the world, <em>without</em> subsidies. The policy implication is profound: the primary barrier is no longer technology cost but rather deployment speed, grid integration, and the cost of capital in developing economies.</p>
+
+<div class="chart-container">
+  <div class="chart-label">Figure 8 — Technology Cost Declines: Solar PV, Wind, Batteries (2010–2023)</div>
+  <canvas id="chart-cost-curves" height="340"></canvas>
+  <div class="chart-caption">Sources: IRENA Renewable Power Generation Costs 2023; BNEF Battery Price Survey 2023; IEA. Indexed: 2010 = 100. Solar PV module prices declined ~89%; battery packs declined ~92%.</div>
+</div>
+
+<h3>Three Great Policy Experiments</h3>
+<p>The global energy transition is being driven by three fundamentally different policy models, each with distinct mechanisms, strengths, and vulnerabilities:</p>
+
+<div class="exec-grid">
+<div class="exec-card">
+  <div class="exec-num" style="font-size:1.3rem;font-weight:600;">EU</div>
+  <div class="exec-title">Regulation-Driven, Carbon Pricing-Led</div>
+  <div class="exec-body">The European Green Deal combines legally binding emissions targets (climate neutrality by 2050, −55% by 2030) with the world's most comprehensive carbon pricing architecture (EU ETS + CBAM + ETS2 for buildings/transport from 2027). Total committed resources exceed €1 trillion over 2020–2030. Strengths: policy certainty, private-sector planning visibility, growing carbon revenue. Vulnerabilities: political backlash (2024 farmer protests, rightward parliamentary shift), industrial competitiveness concerns, implementation delays in member states.</div>
+</div>
+<div class="exec-card">
+  <div class="exec-num" style="font-size:1.3rem;font-weight:600;">US</div>
+  <div class="exec-title">Tax Credit-Driven, Subsidy-Led (IRA)</div>
+  <div class="exec-body">The Inflation Reduction Act (2022) authorises an estimated $391–1,200 billion in energy and climate spending through uncapped tax credits (45X manufacturing, 48E clean electricity, EV consumer credits). The IRA has catalysed $128B+ in announced private clean energy manufacturing investment and 330+ major projects. Strengths: market-friendly, politically durable in beneficiary districts, rapid deployment. Vulnerabilities: fiscal cost overruns (Goldman Sachs estimates actual spending may reach $1.2T), administrative complexity, political reversal risk under subsequent administrations, and no carbon pricing to internalise the externality.</div>
+</div>
+<div class="exec-card">
+  <div class="exec-num" style="font-size:1.3rem;font-weight:600;">CN</div>
+  <div class="exec-title">State-Capitalist, Industrial Policy-Led</div>
+  <div class="exec-body">China's dual-carbon strategy (peak emissions before 2030, carbon neutrality before 2060) operates through state-directed investment, SOE mandates, and manufacturing dominance. China invested ~$676B in clean energy in 2023 and controls ~80% of global solar PV and battery manufacturing. Strengths: speed of deployment (2030 renewable target met six years early), manufacturing scale driving down global costs, concentrated policy execution. Vulnerabilities: simultaneous coal expansion (100+ GW approved 2022–2023), energy security tensions with climate ambition, and the systemic risk of critical mineral supply concentration — one country refines 19 of 20 strategic energy minerals.</div>
+</div>
+</div>
+
+<table class="data-table">
+<thead><tr><th>Scenario</th><th>Organisation</th><th>Temp. 2100</th><th>Peak Emissions</th><th>Annual Clean Investment (2030s)</th><th>Key Assumption</th></tr></thead>
+<tbody>
+<tr><td><strong>NZE 2050</strong></td><td>IEA</td><td class="num">~1.5°C</td><td>Already peaked (2023)</td><td class="num">$4.5T/yr</td><td>Net zero by 2050; no new fossil fuel development</td></tr>
+<tr><td><strong>STEPS</strong></td><td>IEA</td><td class="num">~2.5°C</td><td>Mid-2020s</td><td class="num">~$2.5T/yr</td><td>Current + announced policies, practical barriers</td></tr>
+<tr><td><strong>CPS</strong></td><td>IEA</td><td class="num">~3°C</td><td>Post-2030</td><td class="num">~$2T/yr</td><td>Only enacted laws; no aspirational targets</td></tr>
+<tr><td><strong>SSP1-1.9</strong></td><td>IPCC AR6</td><td class="num">~1.4°C</td><td>2020–2025</td><td class="num">3–6× current</td><td>Rapid tech diffusion, sustainable behaviour shift, CDR at scale</td></tr>
+<tr><td><strong>SSP2-4.5</strong></td><td>IPCC AR6</td><td class="num">~2.7°C</td><td>2040–2050</td><td class="num">~1–2× current</td><td>Middle-of-the-road: slow tech diffusion in EMDE</td></tr>
+<tr><td><strong>IRENA 1.5°C</strong></td><td>IRENA</td><td class="num">~1.5°C</td><td>~2023</td><td class="num">$5.7T/yr</td><td>$150T cumulative to 2050; stronger EMDE focus</td></tr>
+</tbody>
+</table>
+</section>
+
+<hr class="section-rule">
+
+<!-- SECTION 5: CONCLUSIONS -->
+<section id="conclusion">
+<h2>5. Conclusions &amp; Policy Recommendations</h2>
+<p class="section-dek">The energy transition is economically inevitable but its pace, distributional consequences, and fiscal sustainability remain contingent on policy choices made in this decade.</p>
+
+<div class="callout">
+  <div class="callout-title">Finding I — The Investment Gap Is Solvable</div>
+  The additional ~$2.5 trillion per year required to close the investment gap to 2030 represents <strong>less than 2.5% of global GDP</strong> and a small fraction of global savings (~$25 trillion annually). The problem is not capital scarcity but capital allocation: redirecting 10% of current global savings toward clean energy investment would close the gap entirely. The policy challenge is creating the <strong>de-risking mechanisms</strong> — currency hedging facilities, first-loss guarantees, blended finance structures, and political risk insurance — that allow private capital to flow to EMDE at reasonable cost.
+</div>
+
+<div class="callout">
+  <div class="callout-title">Finding II — Stranded Asset Risk Is Underpriced</div>
+  Financial markets are not pricing the probability of fossil fuel asset stranding consistently. The $1–4 trillion in potentially stranded assets is <strong>concentrated in a relatively small number of institutions and sovereigns</strong>, creating concentration risks that are not captured by standard diversification metrics. Regulators — particularly the Financial Stability Board, the Basel Committee, and the IMF — should mandate <strong>scenario-based stress testing</strong> of fossil fuel exposure under 1.5°C and 2°C pathways, and require transparency on the assumptions underlying asset valuations in carbon-intensive sectors.
+</div>
+
+<div class="callout">
+  <div class="callout-title">Finding III — Fiscal Transition Requires Managed Diversification</div>
+  The 25 countries most dependent on fossil fuel revenues face an impossible trilemma: they need to (a) decarbonise their domestic energy systems, (b) replace declining resource revenues, and (c) maintain fiscal stability and social cohesion — all simultaneously. The international community has no credible mechanism for supporting this transition at scale. A <strong>Fossil Fuel Revenue Diversification Facility</strong>, possibly housed at the IMF or the World Bank, could provide technical assistance, concessional finance, and policy conditionality linked to measurable diversification milestones — analogous to the Heavily Indebted Poor Countries (HIPC) initiative but for transition exposure rather than debt distress alone.
+</div>
+
+<h3>Policy Recommendations</h3>
+
+<table class="data-table">
+<thead><tr><th style="width:5%">#</th><th>Recommendation</th><th style="width:20%">Primary Actor(s)</th><th style="width:12%">Timeframe</th></tr></thead>
+<tbody>
+<tr><td class="num">1</td><td><strong>Establish a Global Energy Transition Financing Platform</strong> — a dedicated multilateral facility to provide concessional capital, currency hedging, and first-loss guarantees to clean energy projects in EMDE, capitalised at a minimum $100 billion through SDR reallocation, MDB contributions, and private co-investment.</td><td>IMF, World Bank, G20</td><td>2025–2027</td></tr>
+<tr><td class="num">2</td><td><strong>Mandate transition plans for all systemically important financial institutions</strong> — requiring Paris-aligned lending portfolios with specific, time-bound fossil fuel exposure reduction targets, modelled on the NGFS scenarios and enforced by national regulators under FSB coordination.</td><td>FSB, national central banks</td><td>2026–2028</td></tr>
+<tr><td class="num">3</td><td><strong>Reform fossil fuel subsidies through sequenced, compensatory measures</strong> — eliminate explicit subsidies ($1.3T/year) within five years while redirecting 25% of the fiscal savings to targeted cash transfers for vulnerable households and regions, following the Indonesian and Iranian models of sequenced reform with visible social dividends.</td><td>National governments, IMF</td><td>2025–2030</td></tr>
+<tr><td class="num">4</td><td><strong>Expand carbon pricing coverage from 23% to 50% of global emissions by 2030</strong> — through a combination of new national ETS/carbon taxes in major emerging economies (India, Brazil, Indonesia) and carbon border adjustment mechanisms (CBAM) that create incentives for exporter countries to adopt equivalent pricing.</td><td>National governments, WTO</td><td>2026–2030</td></tr>
+<tr><td class="num">5</td><td><strong>Create a Fossil Fuel Revenue Diversification Facility</strong> at the IMF or World Bank — providing technical assistance, concessional transition finance, and policy conditionality for the ~25 fiscally vulnerable fossil-fuel-dependent states, with diversification milestones linked to disbursement tranches.</td><td>IMF, World Bank</td><td>2027–</td></tr>
+<tr><td class="num">6</td><td><strong>Accelerate grid investment through streamlined permitting and dedicated finance</strong> — the $300 billion annual grid investment gap is the single largest infrastructure bottleneck. National governments should designate transmission corridors of national significance with expedited permitting, and MDBs should create a dedicated Grid Investment Facility for EMDE.</td><td>National governments, MDBs</td><td>2025–2030</td></tr>
+<tr><td class="num">7</td><td><strong>Scale just transition programmes to match the scale of the challenge</strong> — the EU Just Transition Fund (€100B) should be replicated in other regions. Programmes should follow best-practice design principles: early intervention before closure, infrastructure investment over consumption subsidies, and genuine regional devolution of spending authority.</td><td>National governments, EU, MDBs</td><td>2025–2035</td></tr>
+</tbody>
+</table>
+
+</section>
+
+<hr class="section-rule">
+
+<!-- REFERENCES -->
+<section id="references">
+<h2>References &amp; Methodology</h2>
+<p class="section-dek">Principal data sources, institutional reports, and academic literature cited in this analysis.</p>
+
+<h3>Institutional Reports</h3>
+<table class="data-table">
+<thead><tr><th>Institution</th><th>Report</th><th>Year</th><th>Key Data Used</th></tr></thead>
+<tbody>
+<tr><td>IEA</td><td>World Energy Investment 2024</td><td>2024</td><td>Global clean energy investment, regional breakdowns, technology-level data</td></tr>
+<tr><td>IEA</td><td>World Energy Outlook 2024–2025</td><td>2024–2025</td><td>STEPS, NZE, CPS scenario data; EMDE investment share analysis</td></tr>
+<tr><td>IEA</td><td>Net Zero Roadmap: A Global Pathway (2023 Update)</td><td>2023</td><td>NZE investment pathways, sectoral milestones</td></tr>
+<tr><td>IEA</td><td>World Energy Employment 2023</td><td>2023</td><td>Clean energy vs. fossil fuel employment; skills transferability</td></tr>
+<tr><td>BNEF</td><td>Energy Transition Investment Trends 2025, 2026</td><td>2025–2026</td><td>Energy transition investment totals; technology cost surveys</td></tr>
+<tr><td>IRENA</td><td>World Energy Transitions Outlook 2023</td><td>2023</td><td>1.5°C pathway; $150T cumulative investment requirement</td></tr>
+<tr><td>IRENA</td><td>Stranded Assets and Sustainable Development</td><td>2023</td><td>Stranded asset valuation methodology; regional risk assessment</td></tr>
+<tr><td>Carbon Tracker Initiative</td><td>Unburnable Carbon: 2011–2023 Series</td><td>2011–2023</td><td>Unburnable carbon thesis; 60–80% reserve stranding estimate</td></tr>
+<tr><td>IMF</td><td>Fiscal Monitor: Climate and Fiscal Policy</td><td>October 2023</td><td>Fossil fuel subsidies; carbon pricing revenue; fiscal vulnerability</td></tr>
+<tr><td>IMF</td><td>Working Paper 2022/123: Stranded Assets</td><td>2022</td><td>Stranded asset scenarios; sovereign balance sheet implications</td></tr>
+<tr><td>World Bank</td><td>State and Trends of Carbon Pricing</td><td>2024</td><td>Carbon pricing coverage (23%); revenue data; price levels</td></tr>
+<tr><td>IPCC</td><td>Sixth Assessment Report, Working Group III</td><td>2022</td><td>SSP scenario framework; mitigation pathways; integrated assessment</td></tr>
+<tr><td>CPI</td><td>Global Landscape of Climate Finance 2024</td><td>2024</td><td>Climate finance flows; EMDE share of mitigation finance</td></tr>
+<tr><td>ETC</td><td>Financing the Transition</td><td>2023</td><td>$3.5T/year gross investment; 1.3% GDP net requirement</td></tr>
+<tr><td>Rainforest Action Network et al.</td><td>Banking on Climate Chaos</td><td>2024</td><td>Bank fossil fuel lending ($1.4T, 2016–2023)</td></tr>
+</tbody>
+</table>
+
+<h3>Key Academic Contributions</h3>
+<ul style="font-size:0.85rem;color:var(--text-secondary);margin:1rem 0 2rem 1.5rem;line-height:1.8;">
+<li><strong>Stern, N.</strong> (2006). <em>The Economics of Climate Change: The Stern Review</em>. Cambridge University Press. — Foundational cost-benefit framework; estimated 5–20% of GDP at risk from unmitigated climate change vs. 1% mitigation cost.</li>
+<li><strong>Caldecott, B.</strong> et al. (2012–ongoing). Stranded Assets Programme, Oxford Smith School of Enterprise and the Environment. — Developed the taxonomy and measurement framework for stranded assets across sectors.</li>
+<li><strong>Ameli, N.</strong> et al. (2021). "Higher cost of finance exacerbates a climate investment trap in developing economies." <em>Nature Communications</em>. — Quantified the 3–7 percentage point cost-of-capital penalty for renewables in EMDE.</li>
+<li><strong>Polzin, F.</strong> et al. (2019). "Mobilizing finance for the energy transition." <em>Nature Energy</em>. — Identified barriers to institutional investment in clean energy infrastructure.</li>
+<li><strong>Steffen, B. & Schmidt, T.S.</strong> (2021). "Strengthening finance in clean energy transitions." <em>Nature Energy</em>. — Role of development finance institutions in de-risking clean energy investment.</li>
+<li><strong>Stern, N. & Stiglitz, J.</strong> (2017). <em>Report of the High-Level Commission on Carbon Prices</em>. — Estimated $50–100/tCO₂ carbon price needed by 2030 for Paris alignment.</li>
+<li><strong>Farmer, J.D.</strong> et al. (2019). "Sensitive intervention points in the post-carbon transition." <em>Science</em>. — Wright's Law dynamics; technology cost forecasting framework.</li>
+<li><strong>Nemet, G.</strong> (2019). <em>How Solar Energy Became Cheap</em>. Routledge. — Documented the learning curve dynamics behind the 89% solar PV cost decline.</li>
+</ul>
+
+<h3>Methodological Note</h3>
+<p style="font-size:0.85rem;color:var(--text-muted);">This report synthesises publicly available data from the IEA, IRENA, BNEF, IMF, World Bank, Carbon Tracker, CPI, and IPCC, alongside published academic literature. Investment figures are reported in nominal US dollars unless otherwise specified. Scenario comparisons use the most recent publicly available iteration of each model (IEA WEO 2024–2025 for STEPS/CPS; IEA NZE Roadmap 2023 Update for NZE; IPCC AR6 WGIII for SSPs; IRENA WETO 2023 for the 1.5°C pathway). Stranded asset estimates represent mid-range values; the full uncertainty range spans ±40% around these central estimates depending on technology cost trajectories, policy stringency, and commodity price assumptions. All data visualisations were generated using Chart.js 4.4.0 with data processed from the cited sources. Any errors or omissions are the responsibility of the author.</p>
+</section>
+
+<div class="back-top"><a href="#exec">↑ Back to top</a></div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="report-footer">
+<div class="footer-inner">
+<div class="footer-meta">
+<div>
+  <h3>About This Report</h3>
+  <p><strong>Economics of the Global Energy Transition: Investment Gaps, Stranded Assets, and the Fiscal Implications of Rapid Decarbonization</strong></p>
+  <p>H Heuristics Research Report № 2025-03</p>
+  <p>Published: 4 August 2025</p>
+  <p>Author: Hunter Hughes, Founder &amp; Principal Analyst, H Heuristics</p>
+  <p>DOI: hheuristics.com/reports/energy-transition-2025</p>
+</div>
+<div>
+  <h3>About H Heuristics</h3>
+  <p>H Heuristics is a market research, economic development consulting, and data intelligence firm based in Nottingham, United Kingdom. We produce original research, interactive dashboards, and consulting deliverables at the intersection of economic development, energy transitions, and spatial diffusion dynamics.</p>
+  <p>Website: <a href="https://hheuristics.com">hheuristics.com</a></p>
+  <p>Substack: <a href="https://hheuristics.substack.com">hheuristics.substack.com</a></p>
+</div>
+</div>
+<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(240,237,230,0.15);font-size:0.7rem;color:rgba(240,237,230,0.4);text-align:center;">
+  © 2025 Hunter Hughes, H Heuristics. All rights reserved. Citation: Hughes, H. (2025). <em>Economics of the Global Energy Transition: Investment Gaps, Stranded Assets, and the Fiscal Implications of Rapid Decarbonization.</em> H Heuristics Research Report № 2025-03.
+</div>
+</div>
+</footer>
+
+<!-- ===== CHART.JS SCRIPTS ===== -->
+<script>
+Chart.defaults.color = '#4a4a4a';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.plugins.tooltip.backgroundColor = '#1a1f2b';
+Chart.defaults.plugins.tooltip.titleFont = { family: "'Inter', sans-serif", weight: '600', size: 12 };
+Chart.defaults.plugins.tooltip.bodyFont = { family: "'Inter', sans-serif", size: 11 };
+Chart.defaults.plugins.tooltip.padding = 10;
+Chart.defaults.plugins.tooltip.cornerRadius = 2;
+
+const colors = {
+  blue: '#2c5282', blueLight: '#63b3ed', blueDark: '#1a2744',
+  gold: '#8b6914', goldLight: '#c8a951',
+  red: '#9b2c2c', teal: '#276749', gray: '#718096',
+  orange: '#c05621', purple: '#553c9a',
+  blueAlpha: 'rgba(44,82,130,0.15)', redAlpha: 'rgba(155,44,44,0.15)',
+};
+
+// ===== FIGURE 1: Investment Gap Over Time =====
+new Chart(document.getElementById('chart-investment-gap'), {
+  type: 'bar',
+  data: {
+    labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025e','2030 NZE'],
+    datasets: [
+      {
+        label: 'Clean Energy Investment (Actual)', data: [1000,1050,1100,1150,1200,1200,1400,1600,1700,2000,null,null],
+        backgroundColor: colors.blue, borderColor: colors.blue, borderWidth: 0, borderRadius: 1
+      },
+      {
+        label: 'Energy Transition Investment (BNEF)', data: [null,null,null,null,null,null,900,1300,1800,2130,2300,null],
+        backgroundColor: colors.blueLight, borderColor: colors.blueLight, borderWidth: 0, borderRadius: 1
+      },
+      {
+        label: 'Fossil Fuel Investment', data: [1000,950,950,1000,1050,950,1000,1100,1100,1000,null,null],
+        backgroundColor: colors.gray, borderColor: colors.gray, borderWidth: 0, borderRadius: 1
+      },
+      {
+        label: 'NZE Required Investment (Pathway)', data: [2200,2300,2400,2600,2800,3000,3300,3600,3900,4200,4500,5500],
+        type: 'line', borderColor: colors.red, backgroundColor: 'transparent',
+        borderWidth: 2, borderDash: [6,3], pointRadius: 3, pointBackgroundColor: colors.red, fill: false, tension: 0.3
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+      y: { title: { display: true, text: 'USD Billions (nominal)', font: { size: 10 } }, grid: { color: '#e8e4db' }, ticks: { callback: v => '$' + (v/1000).toFixed(1) + 'T' } }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': $' + ctx.raw.toLocaleString() + 'B' } }
+    }
+  }
+});
+
+// ===== FIGURE 2: Regional Share =====
+new Chart(document.getElementById('chart-region-share'), {
+  type: 'doughnut',
+  data: {
+    labels: ['China', 'European Union', 'United States', 'EMDE ex-China', 'Africa', 'Other Advanced'],
+    datasets: [{
+      data: [680, 370, 300, 240, 40, 370],
+      backgroundColor: [colors.red, colors.blue, colors.blueLight, colors.gold, colors.teal, colors.gray],
+      borderColor: '#fff', borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 14, font: { size: 10 }, usePointStyle: true } },
+      tooltip: { callbacks: { label: ctx => ctx.label + ': $' + ctx.raw + 'B (' + Math.round(ctx.raw/2000*100) + '%)' } }
+    }
+  }
+});
+
+// ===== FIGURE 3: Technology Gap =====
+new Chart(document.getElementById('chart-tech-gap'), {
+  type: 'bar',
+  data: {
+    labels: ['Solar PV','Wind','Power Grids','Battery Storage','Nuclear','Energy Efficiency','Electrified Transport','Low-Carbon Fuels','CCUS/DAC','Hydrogen'],
+    datasets: [
+      { label: '2024 Investment', data: [500,200,400,50,80,650,740,20,5,3], backgroundColor: colors.blue, borderRadius: 1 },
+      { label: '2030 NZE Required', data: [700,400,700,200,120,1900,1400,200,80,50], backgroundColor: colors.gold, borderRadius: 1 }
+    ]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { title: { display: true, text: 'USD Billions', font: { size: 10 } }, grid: { color: '#e8e4db' } },
+      y: { ticks: { font: { size: 10 } } }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 10 } } }
+    }
+  }
+});
+
+// ===== FIGURE 4: Stranded Assets by Region =====
+new Chart(document.getElementById('chart-stranded-region'), {
+  type: 'bar',
+  data: {
+    labels: ['MENA','Russia & Caspian','Latin America','North America','Sub-Saharan Africa','Asia-Pacific','Europe'],
+    datasets: [
+      { label: 'Stranded Asset Value ($B, 1.5°C)', data: [1200,900,550,350,250,400,250], backgroundColor: colors.red, borderRadius: 1 },
+      { label: '% of Regional GDP at Risk', data: [38,25,12,1.5,15,3,1.2], backgroundColor: colors.gold, borderRadius: 1, yAxisID: 'y1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { grid: { display: false } },
+      y: { title: { display: true, text: 'Stranded Asset Value ($B)', font: { size: 10 } }, grid: { color: '#e8e4db' }, position: 'left' },
+      y1: { title: { display: true, text: '% of Regional GDP', font: { size: 10 } }, grid: { display: false }, position: 'right', ticks: { callback: v => v + '%' }, min: 0, max: 50 }
+    },
+    plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 10 } } } }
+  }
+});
+
+// ===== FIGURE 5: Asset Class Breakdown =====
+new Chart(document.getElementById('chart-asset-class'), {
+  type: 'bar',
+  data: {
+    labels: ['Coal Reserves','Oil Reserves (Conv.)','Oil Reserves (High Cost)','Gas Reserves','Coal Power Plants','Gas Infrastructure','Refineries','Pipelines/LNG'],
+    datasets: [
+      { label: '1.5°C Scenario (Stranded %)', data: [92,45,78,55,85,60,50,40], backgroundColor: colors.red, borderRadius: 1 },
+      { label: 'BAU / 3°C Scenario (Stranded %)', data: [25,10,30,8,15,5,5,2], backgroundColor: colors.gray, borderRadius: 1 }
+    ]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { title: { display: true, text: '% of Asset Value Stranded', font: { size: 10 } }, grid: { color: '#e8e4db' }, max: 100, ticks: { callback: v => v + '%' } },
+      y: { ticks: { font: { size: 10 } } }
+    },
+    plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 10 } } } }
+  }
+});
+
+// ===== FIGURE 6: Fiscal Dependence =====
+new Chart(document.getElementById('chart-fiscal-dependence'), {
+  type: 'bar',
+  data: {
+    labels: ['Iraq','Kuwait','Angola','Libya','Congo (Rep.)','Timor-Leste','Saudi Arabia','Nigeria','Qatar','Russia','Norway','Indonesia','India','Global Avg'],
+    datasets: [
+      { label: 'Fossil Fuel Revenue (% of Govt Revenue)', data: [92,88,75,82,70,76,63,43,55,28,18,12,3,2.5],
+        backgroundColor: ctx => ctx.raw > 50 ? colors.red : ctx.raw > 20 ? colors.gold : colors.blue, borderRadius: 1 }
+    ]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { title: { display: true, text: '% of Government Revenue', font: { size: 10 } }, grid: { color: '#e8e4db' }, max: 100, ticks: { callback: v => v + '%' } },
+      y: { ticks: { font: { size: 10 } } }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.raw + '% of government revenue from fossil fuels' } }
+    }
+  }
+});
+
+// ===== FIGURE 7: Scenarios Comparison =====
+new Chart(document.getElementById('chart-scenarios'), {
+  type: 'bubble',
+  data: {
+    datasets: [
+      { label: 'IEA NZE 2050', data: [{x:1.5,y:4.5,r:22}], backgroundColor: colors.red + '99', borderColor: colors.red, borderWidth: 1 },
+      { label: 'IEA STEPS', data: [{x:2.5,y:2.5,r:14}], backgroundColor: colors.gold + '99', borderColor: colors.gold, borderWidth: 1 },
+      { label: 'IEA CPS', data: [{x:3.0,y:2.0,r:11}], backgroundColor: colors.gray + '99', borderColor: colors.gray, borderWidth: 1 },
+      { label: 'IPCC SSP1-1.9', data: [{x:1.4,y:5.0,r:24}], backgroundColor: colors.teal + '99', borderColor: colors.teal, borderWidth: 1 },
+      { label: 'IPCC SSP2-4.5', data: [{x:2.7,y:2.2,r:13}], backgroundColor: colors.orange + '99', borderColor: colors.orange, borderWidth: 1 },
+      { label: 'IRENA 1.5°C', data: [{x:1.5,y:5.7,r:26}], backgroundColor: colors.purple + '99', borderColor: colors.purple, borderWidth: 1 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { title: { display: true, text: 'Temperature Outcome by 2100 (°C)', font: { size: 11 } }, min: 1.0, max: 3.5, grid: { color: '#e8e4db' }, ticks: { callback: v => v + '°C' } },
+      y: { title: { display: true, text: 'Annual Clean Investment in 2030s ($T)', font: { size: 11 } }, grid: { color: '#e8e4db' }, ticks: { callback: v => '$' + v + 'T' } }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.raw.x + '°C / $' + ctx.raw.y + 'T/yr' } }
+    }
+  }
+});
+
+// ===== FIGURE 8: Technology Cost Curves =====
+new Chart(document.getElementById('chart-cost-curves'), {
+  type: 'line',
+  data: {
+    labels: ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+    datasets: [
+      { label: 'Solar PV Module (Indexed)', data: [100,78,60,45,38,32,26,20,17,14,12,10,9,8],
+        borderColor: colors.gold, backgroundColor: 'transparent', borderWidth: 2.5, pointRadius: 2, tension: 0.3 },
+      { label: 'Onshore Wind (Indexed)', data: [100,92,87,82,78,72,65,58,52,47,42,38,35,31],
+        borderColor: colors.teal, backgroundColor: 'transparent', borderWidth: 2.5, pointRadius: 2, tension: 0.3 },
+      { label: 'Li-Ion Battery Pack (Indexed)', data: [100,82,65,55,48,38,30,22,17,14,12,10,8,7],
+        borderColor: colors.blue, backgroundColor: 'transparent', borderWidth: 2.5, pointRadius: 2, tension: 0.3 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { grid: { display: false } },
+      y: { title: { display: true, text: 'Indexed Cost (2010 = 100)', font: { size: 10 } }, grid: { color: '#e8e4db' }, min: 0, max: 110 }
+    },
+    plugins: {
+      legend: { position: 'bottom', labels: { usePointStyle: true, padding: 16, font: { size: 10 } } },
+      annotation: false
+    }
+  }
+});
+</script>
+</body>
+</html>
